@@ -980,7 +980,7 @@ def get_children(doctype, parent, company, is_root=False):
 	parent_fieldname = "parent_" + doctype.lower().replace(" ", "_")
 	fields = ["name as value", "is_group as expandable"]
 	filters = [["docstatus", "<", 2]]
-
+	filters = [["root_type","in",("Expense","Income")]]
 	filters.append(['ifnull(`{0}`,"")'.format(parent_fieldname), "=", "" if is_root else parent])
 
 	if is_root:
